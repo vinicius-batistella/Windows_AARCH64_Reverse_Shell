@@ -22,6 +22,8 @@ Just a AArch64/Arm64 shellcode for reverse shell.
 //         -g -gcodeview -Wl,--pdb=rev2.pdb \
 //         rev2.s -o rev2.exe
 //
+// Or simply clang .\rev.s -o .\rev.exe on Windows.
+//
 // Slot table layout (relative to x29 = low addr of 0x300 B scratch):
 //   0x00 : kernel32 base (saved for exitfunk re-resolution)
 //   0x08 : &find_function
