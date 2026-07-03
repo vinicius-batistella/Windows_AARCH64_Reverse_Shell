@@ -7,15 +7,6 @@ Just a AArch64/Arm64 shellcode for reverse shell.
 //
 // Connects to 192.168.0.164:4444 and pipes cmd.exe over the socket.
 //
-// Changes vs. rev.s:
-//   1. Self-contained scratch buffers (x19, x21 initialized in prologue;
-//      x29 points INTO reserved scratch instead of caller's frame).
-//   2. `exitfunk` dispatcher with patchable hash immediates so the
-//      Metasploit module can switch EXITFUNC without rewriting the tail.
-//   3. Dead code removed: cached TerminateProcess slot (exitfunk
-//      re-resolves), Advapi32/OpenProcessToken load (never called),
-//      4 leftover x86-alignment NOPs in compute_hash_finished.
-//
 // Build with llvm-mingw on macOS:
 //   clang -target aarch64-pc-windows-gnu -nostdlib -e main \
 //         -fuse-ld=lld -Wl,--subsystem,console \
